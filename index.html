@@ -8,21 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg:#0b0f14;         /* fondo oscuro sobrio (ajustable después) */
-      --card:#111723;        /* tarjetas */
-      --muted:#95a2b3;       /* texto secundario */
-      --text:#e8eef6;        /* texto principal */
-      --brand:#2dd4bf;       /* acento (cian/teal) */
-      --brand-2:#60a5fa;     /* acento secundario */
-      --ok:#22c55e;
-      --warn:#f59e0b;
-      --err:#ef4444;
-      --maxw:1100px;
-      --radius:14px;
-      --shadow:0 10px 30px rgba(0,0,0,.25);
-    }
+    :root{--bg:#0b0f14;--card:#111723;--muted:#95a2b3;--text:#e8eef6;--brand:#2dd4bf;--brand-2:#60a5fa;--ok:#22c55e;--warn:#f59e0b;--err:#ef4444;--maxw:1100px;--radius:14px;--shadow:0 10px 30px rgba(0,0,0,.25)}
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b0f14 0%, #0d1219 100%);color:var(--text)}
@@ -53,7 +41,7 @@
     .badge{border:1px solid #1f2a3a;background:#0e1520;border-radius:999px;padding:8px 12px;color:#c8d3e5;font-size:13px}
     .hero-card{background:radial-gradient(1200px 500px at 30% -20%, rgba(45,212,191,.18), transparent 40%), #0d131d;border:1px solid #1b2535;border-radius:18px;padding:18px}
 
-    /* Products */
+    /* Secciones y tarjetas */
     section{padding:42px 0;border-top:1px solid #11182725}
     .section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -66,7 +54,7 @@
     .features{display:grid;gap:8px;margin:10px 0 0}
     .features li{list-style:none;display:flex;gap:8px;align-items:flex-start}
     .features li::before{content:"✓";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:6px;background:#132033;color:var(--brand);font-size:12px;margin-top:2px}
-    .card .foot{padding:16px;border-top:1px solid #1c2533;display:flex;gap:8px}
+    .card .foot{padding:16px;border-top:1px solid #1c2533;display:flex;gap:8px;flex-wrap:wrap}
     .btn-sm{padding:8px 10px;border-radius:10px;border:1px solid #223044;background:#121a25;font-weight:600;font-size:14px}
     .btn-ghost{background:transparent}
 
@@ -79,7 +67,7 @@
     /* Grid helpers */
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 
-    /* Contact */
+    /* Formularios */
     form{display:grid;gap:12px}
     input, select, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #223044;background:#0e1520;color:#e2e8f0}
     label{font-size:14px;color:#b8c4d7}
@@ -100,6 +88,7 @@
       .mobile.open{display:block}
       .mobile a{display:block;padding:12px 0;border-bottom:1px solid #1c2533}
     }
+    html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
@@ -115,9 +104,9 @@
       </a>
       <nav aria-label="Principal">
         <ul>
-          <li><a href="#soluciones">Soluciones</a></li>
-          <li><a href="#sectores">Sectores</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#promociones">Promociones</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -128,9 +117,9 @@
       </div>
     </div>
     <div class="container mobile" id="mobileMenu">
-      <a href="#soluciones">Soluciones</a>
-      <a href="#sectores">Sectores</a>
-      <a href="#testimonios">Testimonios</a>
+      <a href="#productos">Productos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#promociones">Promociones</a>
       <a href="#contacto">Contacto</a>
     </div>
   </header>
@@ -149,7 +138,7 @@
         </div>
         <div style="display:flex;gap:10px;margin-top:18px">
           <a class="btn btn-brand" href="#contacto">Quiero una demo</a>
-          <a class="btn" href="#soluciones">Ver soluciones</a>
+          <a class="btn" href="#productos">Ver productos</a>
         </div>
       </div>
       <div class="hero-card" aria-label="Tarjeta de contacto rápido">
@@ -194,24 +183,47 @@
       <div id="panel-contable" role="tabpanel" aria-labelledby="tab-contable">
         <div class="cards">
           <article class="card" data-category="contable">
-            <div class="head"><img class="icon" data-img="contabilidad.png" alt="Icono Contabilidad"><span class="tag">Contabilidad</span><h3>CONTPAQi Contabilidad</h3></div>
-            <div class="body"><p>Catálogos, pólizas y reportes fiscales listos para cumplir con el SAT. Ideal para despachos y PyMEs.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Contabilidad" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/contabilidad.html" style="display:block">
+              <div class="head"><img class="icon" data-img="contabilidad.png" alt="Icono Contabilidad"><span class="tag">Contabilidad</span><h3>CONTPAQi Contabilidad</h3></div>
+              <div class="body"><p>Catálogos, pólizas y reportes fiscales listos para cumplir con el SAT. Ideal para despachos y PyMEs.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/contabilidad.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Contabilidad" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
+
           <article class="card" data-category="contable">
-            <div class="head"><img class="icon" data-img="nominas.png" alt="Icono Nóminas"><span class="tag">Nóminas</span><h3>CONTPAQi Nóminas</h3></div>
-            <div class="body"><p>Cálculo, incidencias y timbrado sin complicaciones. Capacitación y migración incluidas en nuestros servicios.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20N%C3%B3minas" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/nominas.html" style="display:block">
+              <div class="head"><img class="icon" data-img="nominas.png" alt="Icono Nóminas"><span class="tag">Nóminas</span><h3>CONTPAQi Nóminas</h3></div>
+              <div class="body"><p>Cálculo, incidencias y timbrado sin complicaciones. Capacitación y migración incluidas.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/nominas.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20N%C3%B3minas" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
+
           <article class="card" data-category="contable">
-            <div class="head"><img class="icon" data-img="bancos.png" alt="Icono Bancos"><span class="tag">Bancos</span><h3>CONTPAQi Bancos</h3></div>
-            <div class="body"><p>Conciliación bancaria ágil, flujos de caja y plantillas para acelerar tu cierre.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Bancos" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/bancos.html" style="display:block">
+              <div class="head"><img class="icon" data-img="bancos.png" alt="Icono Bancos"><span class="tag">Bancos</span><h3>CONTPAQi Bancos</h3></div>
+              <div class="body"><p>Conciliación bancaria ágil, flujos de caja y plantillas para acelerar tu cierre.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/bancos.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Bancos" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
+
           <article class="card" data-category="contable">
-            <div class="head"><img class="icon" data-img="xml.png" alt="Icono XML en línea+"><span class="tag">XML</span><h3>XML en línea+</h3></div>
-            <div class="body"><p>Descarga y administración de CFDI directamente del SAT para tu contabilidad.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20XML%20en%20l%C3%ADnea%2B" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/xml.html" style="display:block">
+              <div class="head"><img class="icon" data-img="xml.png" alt="Icono XML en línea+"><span class="tag">XML</span><h3>XML en línea+</h3></div>
+              <div class="body"><p>Descarga y administración de CFDI directamente del SAT para tu contabilidad.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/xml.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20XML%20en%20l%C3%ADnea%2B" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
         </div>
       </div>
@@ -220,19 +232,36 @@
       <div id="panel-comercial" class="hidden" role="tabpanel" aria-labelledby="tab-comercial">
         <div class="cards">
           <article class="card" data-category="comercial">
-            <div class="head"><img class="icon" data-img="comercial-start.png" alt="Icono Comercial Start"><span class="tag">Comercial</span><h3>CONTPAQi Comercial Start</h3></div>
-            <div class="body"><p>Entrada ideal para ventas e inventario con lo esencial para arrancar.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Comercial%20Start" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/comercial-start.html" style="display:block">
+              <div class="head"><img class="icon" data-img="comercial-start.png" alt="Icono Comercial Start"><span class="tag">Comercial</span><h3>CONTPAQi Comercial Start</h3></div>
+              <div class="body"><p>Entrada ideal para ventas e inventario con lo esencial para arrancar.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/comercial-start.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Comercial%20Start" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
+
           <article class="card" data-category="comercial">
-            <div class="head"><img class="icon" data-img="comercial-premium.png" alt="Icono Comercial Premium"><span class="tag">Comercial</span><h3>CONTPAQi Comercial Premium</h3></div>
-            <div class="body"><p>Control avanzado de listas de precio, políticas y reportes. Ideal para crecimiento.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Comercial%20Premium" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/comercial-premium.html" style="display:block">
+              <div class="head"><img class="icon" data-img="comercial-premium.png" alt="Icono Comercial Premium"><span class="tag">Comercial</span><h3>CONTPAQi Comercial Premium</h3></div>
+              <div class="body"><p>Control avanzado de listas de precio, políticas y reportes. Ideal para crecimiento.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/comercial-premium.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Comercial%20Premium" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
+
           <article class="card" data-category="comercial">
-            <div class="head"><img class="icon" data-img="comercial-pro.png" alt="Icono Comercial Pro"><span class="tag">Comercial</span><h3>CONTPAQi Comercial Pro</h3></div>
-            <div class="body"><p>Para operaciones con alto volumen y resurtidos. Compatible multi-sucursal.</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Demo</a><a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Comercial%20Pro" target="_blank" rel="noopener">WhatsApp</a></div>
+            <a class="card-link" href="sistemas/comercial-pro.html" style="display:block">
+              <div class="head"><img class="icon" data-img="comercial-pro.png" alt="Icono Comercial Pro"><span class="tag">Comercial</span><h3>CONTPAQi Comercial Pro</h3></div>
+              <div class="body"><p>Para operaciones con alto volumen y resurtidos. Compatible multi-sucursal.</p></div>
+            </a>
+            <div class="foot">
+              <a class="btn-sm" href="sistemas/comercial-pro.html">Ver más</a>
+              <a class="btn-sm btn-brand" href="https://wa.me/525568437918?text=Info%20Comercial%20Pro" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </article>
         </div>
       </div>
@@ -243,7 +272,7 @@
           <article class="card" data-category="nube">
             <div class="head"><span class="tag">Nube</span><h3>Próximamente</h3></div>
             <div class="body"><p>Aquí agregaremos tus productos en la nube (me los pasas y los integro de inmediato).</p></div>
-            <div class="foot"><a class="btn-sm btn-ghost" href="#contacto">Avísame cuando estén</a></div>
+            <div class="foot"><a class="btn-sm" href="#contacto">Avísame cuando estén</a></div>
           </article>
         </div>
       </div>
@@ -381,63 +410,20 @@
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-<script>
-  // --- IMÁGENES DE PRODUCTO (usa tus archivos .webp en GitHub Pages) ---
-  const IMG_BASE = 'https://unidaduniversal.github.io/IMG/';
-
-  // Mapa: data-img (del HTML) -> archivo real .webp en /IMG/
-  // (si cambias un nombre en /IMG/, solo actualiza aquí)
-  const IMG_MAP = {
-    // Panel Contable
-    'contabilidad.png': 'Contabilidad.webp',
-    'nominas.png':      'Nominas.webp',
-    'bancos.png':       'Bancos.webp',
-    'xml.png':          'XMLenlinea+.webp',          // ojo: lleva +
-
-    // Panel Comercial
-    'comercial-start.png':   'ComerStart.webp',
-    'comercial-premium.png': 'ComerPremium.webp',
-    'comercial-pro.png':     'ComercialPro.webp',
-
-    // Extras (por si luego los usas)
-    'factura-electronica.png': 'Facturaelectronica.webp',
-    'cfdi-en-linea.png':       'CFDI en linea+.webp'   // ojo: tiene espacios y +
-  };
-
-  // Asigna src a todos los <img class="icon" data-img="...">
-  document.querySelectorAll('.card .icon').forEach(img => {
-    const key = img.getAttribute('data-img');
-    const file = IMG_MAP[key];
-    if (!file) {
-      console.warn('Imagen no mapeada para', key);
-      return;
-    }
-    // encodeURIComponent cubre espacios y el signo + (→ %2B)
-    img.src = IMG_BASE + encodeURIComponent(file);
-  });
-</script>
-
-
     // Menú mobile
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobileMenu');
-    burger?.addEventListener('click',()=>{
-      mobileMenu.classList.toggle('open');
-    });
+    burger?.addEventListener('click',()=>{ mobileMenu.classList.toggle('open'); });
 
-    // Formulario rápido -> WhatsApp
-    const quickForm = document.getElementById('quickForm');
-    quickForm?.addEventListener('submit', (e)=>{
+    // Formularios -> WhatsApp
+    document.getElementById('quickForm')?.addEventListener('submit', (e)=>{
       e.preventDefault();
       const modulo = encodeURIComponent(document.getElementById('modulo').value);
       const mensaje = encodeURIComponent(document.getElementById('mensaje').value.trim());
       const texto = `Hola Expiriti, me interesa ${modulo}. ${mensaje}`;
       window.open(`https://wa.me/525568437918?text=${texto}`, '_blank');
     });
-
-    // Form contacto -> WhatsApp (sin backend por ahora)
-    const contactForm = document.getElementById('contactForm');
-    contactForm?.addEventListener('submit', (e)=>{
+    document.getElementById('contactForm')?.addEventListener('submit', (e)=>{
       e.preventDefault();
       const nombre = encodeURIComponent(document.getElementById('nombre').value.trim());
       const correo = encodeURIComponent(document.getElementById('correo').value.trim());
@@ -448,34 +434,60 @@
       window.open(`https://wa.me/525568437918?text=${texto}`, '_blank');
     });
 
-    // Accesibilidad: focus-visible polyfill sencillo (opcional, mínimo)
-    (function(){
-      function onFirstTab(e){
-        if(e.key === 'Tab'){
-          document.body.classList.add('user-tabbed');
-          window.removeEventListener('keydown', onFirstTab);
-        }
-      }
-      window.addEventListener('keydown', onFirstTab);
-    })();
-    // Tabs: cambiar panel visible
-    const tabs = document.querySelectorAll('.tablist .tab');
-    const panels = {
-      contable: document.getElementById('panel-contable'),
-      comercial: document.getElementById('panel-comercial'),
-      nube: document.getElementById('panel-nube')
+    // ----------------- IMÁGENES (.webp en GitHub Pages) -----------------
+    const IMG_BASE = 'https://unidaduniversal.github.io/IMG/';
+    const IMG_MAP = {
+      // panel contable
+      'contabilidad.png': 'Contabilidad.webp',
+      'nominas.png':      'Nominas.webp',
+      'bancos.png':       'Bancos.webp',
+      'xml.png':          'XMLenlinea+.webp',
+      // panel comercial
+      'comercial-start.png':   'ComerStart.webp',
+      'comercial-premium.png': 'ComerPremium.webp',
+      'comercial-pro.png':     'ComercialPro.webp',
+      // opcionales
+      'factura-electronica.png': 'Facturaelectronica.webp',
+      'cfdi-en-linea.png':       'CFDI en linea+.webp'
     };
+    document.querySelectorAll('.card .icon').forEach(img=>{
+      const key = img.getAttribute('data-img');
+      const file = IMG_MAP[key];
+      if(!file){ console.warn('Imagen no mapeada:', key); return; }
+      img.src = IMG_BASE + encodeURIComponent(file);
+    });
+
+    // ----------------- TABS (accesibles y robustos) -----------------
+    const tabs = Array.from(document.querySelectorAll('.tablist .tab'));
+    const panels = {
+      'tab-contable': document.getElementById('panel-contable'),
+      'tab-comercial': document.getElementById('panel-comercial'),
+      'tab-nube': document.getElementById('panel-nube')
+    };
+
+    function activateTab(id){
+      tabs.forEach(b=>b.setAttribute('aria-selected','false'));
+      Object.values(panels).forEach(p=>p.classList.add('hidden'));
+      const btn = document.getElementById(id);
+      const panelId = btn?.getAttribute('aria-controls');
+      btn?.setAttribute('aria-selected','true');
+      if(panelId) document.getElementById(panelId)?.classList.remove('hidden');
+    }
+
     tabs.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        tabs.forEach(b=>b.setAttribute('aria-selected','false'));
-        btn.setAttribute('aria-selected','true');
-        Object.values(panels).forEach(p=>p.classList.add('hidden'));
-        if(btn.id==='tab-contable') panels.contable.classList.remove('hidden');
-        if(btn.id==='tab-comercial') panels.comercial.classList.remove('hidden');
-        if(btn.id==='tab-nube') panels.nube.classList.remove('hidden');
-        document.getElementById('productos').scrollIntoView({behavior:'smooth', block:'start'});
+      btn.addEventListener('click', ()=> activateTab(btn.id));
+      // soporte teclado
+      btn.addEventListener('keydown', (e)=>{
+        const i = tabs.indexOf(btn);
+        if(e.key==='ArrowRight'){ (tabs[i+1]||tabs[0]).focus(); }
+        if(e.key==='ArrowLeft'){ (tabs[i-1]||tabs[tabs.length-1]).focus(); }
+        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activateTab(btn.id); }
       });
     });
+
+    // Asegura estado inicial correcto
+    activateTab('tab-contable');
+
   </script>
 </body>
 </html>
